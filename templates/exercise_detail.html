@@ -5,7 +5,9 @@
 <nav style="margin-top: 80px" aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{% url 'books:book-list' %}">Home</a></li>
-    <li class="breadcrumb-item active">{{ book.slug }}</li>
+    <li class="breadcrumb-item"><a href="{{ exercise.chapter.books.get_absolute_url }}">{{ exercise.chapter.books.slug}}</a></li>
+    <li class="breadcrumb-item"><a href="{{ exercise.chapter.get_absolute_url }}">{{ exercise.chapter.chapter_number }}</a></li>
+    <li class="breadcrumb-item active">{{ exercise.exercise_number }}</li>
   </ol>
 </nav>
 
@@ -17,7 +19,7 @@
         <div class="card">
         <!-- Card image-->
         <div class="view overlay">
-            <img src="{{ book.cover.url }}" class="card-img-top"
+            <img src="{{ exercise.chapter.books.cover.url }}" class="card-img-top"
             alt="Sample image">
             <a>
             <div class="mask rgba-white-slight"></div>
@@ -28,11 +30,11 @@
         <div class="card-body">
             <!-- Title-->
             <div class="row">
-            {% for author in book.authors.all %}
+            {% for author in exercise.chapter.books.authors.all %}
              <a class="col font-small font-weight-bold blue-text mb-0">{{ author }}</a>
             {% endfor %}
             <span class="col text-right font-small font-weight-bold dark-grey-text mb-1"><i class="far fa-clock-o"></i>
-            {{ book.publication_date|date}}</span>
+            {{ exercise.chapter.books.publication_date|date}}</span>
             </div>
             <br>           
             <button type="button" class="btn btn-warning btn-block"><strong><i class="fas fa-shopping-cart white-text" aria-hidden="true"></i> Add to Cart</strong></button>
@@ -45,19 +47,23 @@
     <!-- Section: Categories-->
  
     <div class="col-md-6 mx-5 mb-5">
+    <h5 class="card-title">{{ exercise.chapter.books.title }}</h5>
     <br>
-    <h5 class="card-title">{{ book.title }}</h5>
-    <br>
-    <h4 class="font-weight-bold mt-2"><strong>CHAPTERS</strong></h4>
+    <h4 class="font-weight-bold mt-2"><strong>SOLUTIONS</strong></h4>
     <hr class="blue title-hr">
-    <ul class="list-group z-depth-1 mt-4">
-        {% for chapter in book.chapter_set.all %}
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-        <a href="{{ chapter.get_absolute_url }}">{{ chapter }}</a>
-        <span class="badge badge-danger badge-pill">{{ chapter.chapter_number }}</span>
-        </li>
-        {% endfor %}        
-    </ul>
+        {% for solution in exercise.solution_set.all %}
+        <!-- Buttons trigger collapse -->
+        <p>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Solution: {{ solution.solution_number }}
+        </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+            <img src="{{ solution.image.url }}" alt="">
+        </div>
+        </div>
+    {% endfor %}        
     </div>
     <!-- Section: Categories-->
 {% endblock content %}

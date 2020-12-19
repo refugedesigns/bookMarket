@@ -87,258 +87,62 @@
     </ol>
 </nav>
 
-<!-- Section: Group of personal cards-->
-    <section class="pt-2 mt-3 pb-3">
-    <!-- Grid row-->
-    <div class="row">
-        <!-- Grid column-->
-        <div class="col-md-6 col-lg-3">
-        <!-- Card-->
-        <div class="card card-personal mb-4">
-            <!-- Card image-->
-            <div class="view overlay">
-            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/square/9.jpg"
-                alt="Card image cap">
-            <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-            </a>
+<!-- Grid row -->
+<div class="row">
+<!-- Grid column -->
+
+    <!-- Card -->
+    {% for book in books  %}
+    <div class="col-lg-3 col-md-9 mb-4">
+    <div class="card card-ecommerce">
+    <!-- Card image -->
+    <a href="{{ book.get_absolute_url }}" class="view overlay d-flex justify-content-center">
+       <img src="{{ book.cover.url }}"
+        class="img-fluid" alt="book cover" style="width : 100%;">
+        <a>
+        <div class="mask rgba-white-slight"></div>
+        </a>
+    </a>
+    <!-- Card image -->
+    <!-- Card content -->
+    <div class="card-body">
+        <!-- Category & Title -->
+        <h6 class="card-title mb-1">
+            <a href="{{ book.get_absolute_url }}" class="dark-grey-text">{{ book.title|truncatechars:20 }}</a>
+        </h6>
+        <div class="row">
+            <div class="col d-flex justify-content-between">
+            {% for author in book.authors.all %}
+            <a class="font-small font-weight-bold blue-text mb-0">{{ author }}</a>
+            {% endfor %}                
+            <span class="text-right font-small dark-grey-text mb-1"><i class="far fa-clock-o"></i>
+            {{ book.publication_date|date }}</span>
             </div>
-            <!-- Card image-->
-            <!-- Card content-->
-            <div class="card-body">
-            <!-- Title-->
-            <a>
-                <h4 class="card-title"><strong>Title of the news</strong></h4>
+        </div>
+        <!-- Card footer -->
+        <div class="card-footer pb-0">
+        <div class="row mb-0">
+            <span class="float-left">
+            <strong>${{ book.price }}</strong>
+            </span>
+            <span class="float-right">
+            <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                <i class="fas fa-shopping-cart ml-3"></i>
             </a>
-            <a><span class="badge badge-danger mb-2">Sport</span></a>
-            <br>
-            <a class="card-meta"><span><i class="fas fa-user pr-1"></i>Tom Brown</span></a>
-            <p class="card-meta float-right">18/08/2017</p>
-            <button type="button" class="btn btn-primary btn-sm btn-block">View details</button>
-            </div>
-            <!-- Card content-->
+            </span>
         </div>
-        <!-- Card-->
         </div>
-        <!-- Grid column-->
-        <!-- Grid column-->
-        <div class="col-md-6 col-lg-3">
-        <!-- Card-->
-        <div class="card card-personal mb-4">
-            <!-- Card image-->
-            <div class="view overlay">
-            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/square/17.jpg"
-                alt="Card image cap">
-            <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-            </a>
-            </div>
-            <!-- Card image-->
-            <!-- Card content-->
-            <div class="card-body">
-            <!-- Title-->
-            <a>
-                <h4 class="card-title"><strong>Title of the news</strong></h4>
-            </a>
-            <a><span class="badge badge-info mb-2">Technology</span></a>
-            <br>
-            <a class="card-meta"><span><i class="fas fa-user pr-1"></i>Tom Brown</span></a>
-            <p class="card-meta float-right">18/08/2017</p>
-            <button type="button" class="btn btn-primary btn-sm btn-block">View details</button>
-            </div>
-            <!-- Card content-->
-        </div>
-        <!-- Card-->
-        </div>
-        <!-- Grid column-->
-        <!-- Grid column-->
-        <div class="col-md-6 col-lg-3">
-        <!-- Card-->
-        <div class="card card-personal mb-4">
-            <!-- Card image-->
-            <div class="view overlay">
-            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/square/2.jpg"
-                alt="Card image cap">
-            <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-            </a>
-            </div>
-            <!-- Card image-->
-            <!-- Card content-->
-            <div class="card-body">
-            <!-- Title-->
-            <a>
-                <h4 class="card-title"><strong>Title of the news</strong></h4>
-            </a>
-            <a><span class="badge badge-success mb-2">Health</span></a>
-            <br>
-            <a class="card-meta"><span><i class="fas fa-user pr-1"></i>Tom Brown</span></a>
-            <p class="card-meta float-right">18/08/2017</p>
-            <button type="button" class="btn btn-primary btn-sm btn-block">View details</button>
-            </div>
-            <!-- Card content-->
-        </div>
-        <!-- Card-->
-        </div>
-        <!-- Grid column-->
-        <!-- Grid column-->
-        <div class="col-md-6 col-lg-3">
-        <!-- Card-->
-        <div class="card card-personal mb-4">
-            <!-- Card image-->
-            <div class="view overlay">
-            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/square/23.jpg"
-                alt="Card image cap">
-            <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-            </a>
-            </div>
-            <!-- Card image-->
-            <!-- Card content-->
-            <div class="card-body">
-            <!-- Title-->
-            <a>
-                <h4 class="card-title"><strong>Title of the news</strong></h4>
-            </a>
-            <a><span class="badge badge-secondary mb-2">Lifestyle</span></a>
-            <br>
-            <a class="card-meta"><span><i class="fas fa-user pr-1"></i>Tom Brown</span></a>
-            <p class="card-meta float-right">18/08/2017</p>
-            <button type="button" class="btn btn-primary btn-sm btn-block">View details</button>
-            </div>
-            <!-- Card content-->
-        </div>
-        <!-- Card-->
-        </div>
-        <!-- Grid column-->
     </div>
-    <!-- Grid row-->
-    <!-- Grid row-->
-    <div class="row mb-4">
-        <!-- Grid column-->
-        <div class="col-md-6 col-lg-3">
-        <!-- Card-->
-        <div class="card card-personal mb-4">
-            <!-- Card image-->
-            <div class="view overlay">
-            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/square/14.jpg"
-                alt="Card image cap">
-            <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-            </a>
-            </div>
-            <!-- Card image-->
-            <!-- Card content-->
-            <div class="card-body">
-            <!-- Title-->
-            <a>
-                <h4 class="card-title"><strong>Title of the news</strong></h4>
-            </a>
-            <a><span class="badge badge-info mb-2">Technology</span></a>
-            <br>
-            <a class="card-meta"><span><i class="fas fa-user pr-1"></i>Tom Brown</span></a>
-            <p class="card-meta float-right">18/08/2017</p>
-            <button type="button" class="btn btn-primary btn-sm btn-block">View details</button>
-            </div>
-            <!-- Card content-->
-        </div>
-        <!-- Card-->
-        </div>
-        <!-- Grid column-->
-        <!-- Grid column-->
-        <div class="col-md-6 col-lg-3">
-        <!-- Card-->
-        <div class="card card-personal mb-4">
-            <!-- Card image-->
-            <div class="view overlay">
-            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/square/16.jpg"
-                alt="Card image cap">
-            <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-            </a>
-            </div>
-            <!-- Card image-->
-            <!-- Card content-->
-            <div class="card-body">
-            <!-- Title-->
-            <a>
-                <h4 class="card-title"><strong>Title of the news</strong></h4>
-            </a>
-            <a><span class="badge badge-info mb-2">Technology</span></a>
-            <br>
-            <a class="card-meta"><span><i class="fas fa-user pr-1"></i>Tom Brown</span></a>
-            <p class="card-meta float-right">18/08/2017</p>
-            <button type="button" class="btn btn-primary btn-sm btn-block">View details</button>
-            </div>
-            <!-- Card content-->
-        </div>
-        <!-- Card-->
-        </div>
-        <!-- Grid column-->
-        <!-- Grid column-->
-        <div class="col-md-6 col-lg-3">
-        <!-- Card-->
-        <div class="card card-personal mb-4">
-            <!-- Card image-->
-            <div class="view overlay">
-            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/square/5.jpg"
-                alt="Card image cap">
-            <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-            </a>
-            </div>
-            <!-- Card image-->
-            <!-- Card content-->
-            <div class="card-body">
-            <!-- Title-->
-            <a>
-                <h4 class="card-title"><strong>Title of the news</strong></h4>
-            </a>
-            <a><span class="badge badge-secondary mb-2">Lifestyle</span></a>
-            <br>
-            <a class="card-meta"><span><i class="fas fa-user pr-1"></i>Tom Brown</span></a>
-            <p class="card-meta float-right">18/08/2017</p>
-            <button type="button" class="btn btn-primary btn-sm btn-block">View details</button>
-            </div>
-            <!-- Card content-->
-        </div>
-        <!-- Card-->
-        </div>
-        <!-- Grid column-->
-        <!-- Grid column-->
-        <div class="col-md-6 col-lg-3">
-        <!-- Card-->
-        <div class="card card-personal mb-4">
-            <!-- Card image-->
-            <div class="view overlay">
-            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/square/7.jpg"
-                alt="Card image cap">
-            <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-            </a>
-            </div>
-            <!-- Card image-->
-            <!-- Card content-->
-            <div class="card-body">
-            <!-- Title-->
-            <a>
-                <h4 class="card-title"><strong>Title of the news</strong></h4>
-            </a>
-            <a><span class="badge badge-warning mb-2">Work</span></a>
-            <br>
-            <a class="card-meta"><span><i class="fas fa-user pr-1"></i>Tom Brown</span></a>
-            <p class="card-meta float-right">18/08/2017</p>
-            <button type="button" class="btn btn-primary btn-sm btn-block">View details</button>
-            </div>
-            <!-- Card content-->
-        </div>
-        <!-- Card-->
-        </div>
-        <!-- Grid column-->
+    <!-- Card content -->
     </div>
-    <!-- Grid row-->
-    </section>
-    <!-- Section: Group of personal cards-->
+    <!-- Card -->
 </div>
+
+    {% endfor %}
+
+</div>
+</div>
+</div>
+
 
 {% endblock content %}
